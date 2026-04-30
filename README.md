@@ -145,9 +145,3 @@ Copy `.env.example` to `.env` and fill in your values. Never commit `.env`.
 
 ## Production Considerations
 
-[Fill in Phase 10 — this section is what separates this repo from a typical junior portfolio. Examples:]
-- Dead Letter Queue for failed Lambda invocations
-- SNS push alerts replacing CloudWatch polling
-- Athena querying over S3 data lake for ad-hoc analysis
-- RDS read replica for dashboard queries under load
-- S3 lifecycle policies to archive data older than 90 days
