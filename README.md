@@ -55,7 +55,7 @@ to one layer don't cascade into the others.
 | 1 | Constraints & Capacity | AWS free-tier limits calculated, invocation math validated | ✅ |
 | 2 | Architecture Decision Records | Four ADRs written before any code: S3 partitioning, Lambda trigger model, deduplication strategy, analytics schema | ✅ |
 | 3 | Architecture Overview | Full system diagram, data flow documentation | 🔜 |
-| 4 | Java Ingestion Service | Spring Scheduler, DataConnector interface, S3Uploader | 🔜 |
+| 4 | Java Ingestion Service | Spring Scheduler, DataConnector interface, S3Uploader and GitHub CI/CD | 🔜 |
 | 5 | Lambda Processor | Event-driven processor, deduplication, RDS writes | 🔜 |
 | 6 | RDS Schema | Analytics tables designed for read-heavy dashboard queries | 🔜 |
 | 7 | Spring Boot REST API | Pre-aggregated endpoints, versioned API contract | 🔜 |
@@ -112,6 +112,7 @@ Validated NexaMetrics against AWS free-tier limits before any infrastructure dec
 Phase 2 required writing four Architecture Decision Records before any code was written. Each ADR identified the available options, documented the decision made, and acknowledged the tradeoffs accepted when moving forward.
 
 > **Challenge:** Choosing between Lambda processing or CloudWatch Scheduled Polling
+
 > **Solution:** We chose S3 ObjectCreated events to trigger Lambda, ensuring zero wasted invocations. The tradeoff accepted was tight coupling — any change to the S3 path structure requires updating the Lambda trigger configuration simultaneously.
 
 ---
